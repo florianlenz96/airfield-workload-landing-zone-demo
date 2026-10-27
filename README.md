@@ -2,7 +2,7 @@
 
 Smart meters send their readings here. A small .NET 10 minimal API, part of the talk **"Azure Landing Zones Without the Overwhelm"**.
 
-This repository is what an application team writes: **code, the Azure resources it needs, and a ten-line workflow.** Network, identity, permissions, Terraform state and the deployment pipeline come from the [platform](https://github.com/florianlenz96/kestrel-platform).
+This repository is what an application team writes: **code, the Azure resources it needs, and a ten-line workflow.** Network, identity, permissions, Terraform state and the deployment pipeline come from the [platform](https://github.com/florianlenz96/airfield-application-landing-zone-demo).
 
 ```
 src/        the API

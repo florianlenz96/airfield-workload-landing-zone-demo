@@ -14,7 +14,7 @@ on:
 
 jobs:
   app:
-    uses: florianlenz96/kestrel-platform/.github/workflows/app-dotnet.yml@v1
+    uses: florianlenz96/airfield-application-landing-zone-demo/.github/workflows/app-dotnet.yml@v1
     with:
       app-name: meter-readings-api
       destroy: ${{ inputs.destroy == true }}
