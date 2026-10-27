@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+*.user
+
+.terraform/
+*.tfstate
+*.tfstate.*
+tfplan
+plan.log

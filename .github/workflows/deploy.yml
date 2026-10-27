@@ -1,0 +1,23 @@
+# Everything the team writes. The rest comes from the platform's pipeline template.
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      destroy:
+        description: Remove the app's Azure resources (rehearsal reset)
+        type: boolean
+        default: false
+
+jobs:
+  app:
+    uses: florianlenz96/kestrel-platform/.github/workflows/app-dotnet.yml@v1
+    with:
+      app-name: meter-readings-api
+      destroy: ${{ inputs.destroy == true }}
+    permissions:
+      id-token: write # OIDC, no secrets
+      contents: read
