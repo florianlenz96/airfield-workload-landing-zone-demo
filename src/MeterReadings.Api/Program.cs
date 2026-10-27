@@ -1,5 +1,6 @@
 using Azure.Identity;
 using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using MeterReadings.Api;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,7 +36,11 @@ app.MapPost("/readings", async (MeterReading reading, BlobContainerClient contai
 app.MapGet("/readings/{meterId}", async (string meterId, BlobContainerClient container) =>
 {
     var readings = new List<MeterReading>();
-    await foreach (var blob in container.GetBlobsAsync(prefix: $"{meterId}/"))
+    await foreach (var blob in container.GetBlobsAsync(
+        traits: BlobTraits.None,
+        states: BlobStates.None,
+        prefix: $"{meterId}/",
+        cancellationToken: CancellationToken.None))
     {
         var download = await container.GetBlobClient(blob.Name).DownloadContentAsync();
         readings.Add(download.Value.Content.ToObjectFromJson<MeterReading>()!);
